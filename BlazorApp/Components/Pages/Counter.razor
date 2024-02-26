@@ -18,6 +18,9 @@
 
 <button class="btn btn-primary" @onclick="DecrementCount">Click me</button>
 <input @bind="IncrementAmount"/>
+
+<button class="btn btn-primary" @onclick="() => currentCount++">Click me5</button>
+
 @code {
     private int currentCount = 0;
 
