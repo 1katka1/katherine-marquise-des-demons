@@ -1,29 +1,30 @@
 ﻿@page "/TodoList"
+@rendermode InteractiveServer
 <h3>TodoList</h3>
 <ul>
-    @foreach (var item in items)
+    @foreach (var item in _items)
     {
         <li>@item.Name</li>
     }
 </ul>
 
 <input @onchange="InputChanged" />
-<p>@message</p>
+<p>@_message</p>
 
 @code{
 
     record Item(string Name);
 
     static Item a = new Item("n");
-    
-    Item [] items = [a,new Item("b")];
+
+    readonly Item [] _items = [a,new Item("b")];
 
 
-    string message = "";
+    string? _message = "";
 
-    void InputChanged()
+    void InputChanged(ChangeEventArgs e)
     {
-        message = "(string)e.Value";
-        Console.Write(message);
+        _message = (string?)e.Value;
+        Console.WriteLine(_message);
     }
 }
