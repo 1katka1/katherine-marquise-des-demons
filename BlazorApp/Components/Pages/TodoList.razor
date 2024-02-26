@@ -1,8 +1,25 @@
 ﻿@page "/TodoList"
 <h3>TodoList</h3>
+
+@code{
+
+    record Item(string Name);
+
+    static Item a = new Item("n");
+    
+    Item [] items = [a,new Item("b")];
+
+}
 <p role="status">Current count: @currentCount</p>
+<ul>
+    @foreach (var item in items)
+    {
+        <li>@item.Name</li>
+    }
+</ul>
 
 @code {
     int currentCount = 0;
+    
 
 }
